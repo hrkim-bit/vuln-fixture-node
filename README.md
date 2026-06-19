@@ -8,6 +8,8 @@ Node.js/Express vulnerable fixture for IVAS QA.
 ## 의도된 취약점 (9종 — php 픽스처보다 많게 구성)
 
 ### JavaScript (`app.js`, `src/utils.js`)
+- 모든 라우트는 **명명된 핸들러 함수**(`handlePing`, `handleUser` 등)로 분리 — IVAS 함수 매칭용
+- `src/utils.js`는 `app.js`에서 `require` 후 `/merge`, `/extract` 등 라우트로 **호출 연결**
 - Command Injection — `child_process.exec(user_input)`
 - SQL Injection — 문자열 연결 쿼리 조립
 - NoSQL Injection — 검증 없는 `$where` / 사용자 객체 그대로 사용
